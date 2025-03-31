@@ -13,6 +13,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -34,8 +35,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 30,
+                    color: primaryColor,
                   ),
                 ),
+                SizedBox(height: 10),
                 Text(
                   'Мы счастливы увиддеть вас снова. \nВведите ваш email и пароль',
                   style: TextStyle(
@@ -53,7 +56,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(),
+                      borderSide: BorderSide(
+                        width: 2,
+                      ),
                     ),
                   ),
                 ),
@@ -67,20 +72,114 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(),
+                      borderSide: BorderSide(
+                        width: 2,
+                      ),
                     ),
                   ),
                 ),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Забыли пароль?',
+                SizedBox(height: 10),
+                SizedBox(
+                  width: size.width,
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      style: TextStyle(
+                        color: Colors.black,
                       ),
-                      TextSpan(
-                        text: 'Нажмите сюда',
+                      children: [
+                        TextSpan(
+                          text: 'Забыли пароль? ',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Нажмите сюда',
+                          style: TextStyle(
+                            color: Colors.orange,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(20),
+                  child: Ink(
+                    width: size.width,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFffb585),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Center(
+                      child: Text(
+                        'Войти',
+                        style: TextStyle(
+                          color: primaryColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20,
+                        ),
                       ),
-                    ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30),
+                SizedBox(
+                  width: size.width,
+                  child: Text(
+                    'или',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+                  ),
+                ),
+                SizedBox(height: 30),
+                InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(20),
+                  child: Ink(
+                    width: size.width,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Center(
+                      child: Text(
+                        'Создать аккаунт',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(20),
+                  child: Ink(
+                    width: size.width,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: primaryColor,
+                        width: 2,
+                      ),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Center(
+                      child: Text(
+                        'Продолжить как гость',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20,
+                          color: primaryColor,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
