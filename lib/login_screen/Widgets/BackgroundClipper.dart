@@ -15,6 +15,34 @@ class BackgroundClipper extends CustomClipper<Path> {
       size.width * 0.4,
       0,
     );
+    path.addOval(
+      Rect.fromCircle(
+          center: Offset(size.width * 0.2, size.height * 0.1), radius: 40),
+    );
+
+    var pathBottom = Path();
+    pathBottom.moveTo(0, size.height);
+    pathBottom.lineTo(0, size.height * 0.85);
+    pathBottom.cubicTo(
+      0,
+      size.height * 0.85,
+      size.width * 0.3,
+      size.height * 0.75,
+      size.width * 0.4,
+      size.height * 0.9,
+    );
+
+    pathBottom.cubicTo(
+      size.width * 0.45,
+      size.height * 0.98,
+      size.width * 0.6,
+      size.height * 0.8,
+      size.width * 0.9,
+      size.height,
+    );
+
+    path.addPath(pathBottom, Offset(0, 0));
+
     path.close();
     return path;
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../Config/colors.dart';
@@ -96,6 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         TextSpan(
                           text: 'Нажмите сюда',
+                          recognizer: TapGestureRecognizer()..onTap = () {},
                           style: TextStyle(
                             color: Colors.orange,
                           ),
