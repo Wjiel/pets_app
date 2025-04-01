@@ -56,82 +56,78 @@ class StartScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding:
-            const EdgeInsets.only(right: 20, left: 20, top: 40, bottom: 60),
-        child: PageView(
-          physics: NeverScrollableScrollPhysics(),
-          controller: pageController,
-          children: [
-            PageViewTitle(
-              currentPageIndex: 0,
-              title: [
-                TextSpan(
-                  text: 'Узнавай ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                  ),
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: pageController,
+        children: [
+          PageViewTitle(
+            currentPageIndex: 0,
+            title: [
+              TextSpan(
+                text: 'Узнавай ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
                 ),
-                TextSpan(
-                  text: 'чуть больше о своем питомце',
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
+              ),
+              TextSpan(
+                text: 'чуть больше о своем питомце',
+                style: TextStyle(
+                  fontSize: 25,
                 ),
-              ],
-            ),
-            PageViewTitle(
-              currentPageIndex: 1,
-              title: [
-                TextSpan(
-                  text: 'Получайте ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                  ),
+              ),
+            ],
+          ),
+          PageViewTitle(
+            currentPageIndex: 1,
+            title: [
+              TextSpan(
+                text: 'Получайте ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
                 ),
-                TextSpan(
-                  text: 'советы по уходу, которые ',
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
+              ),
+              TextSpan(
+                text: 'советы по уходу, которые ',
+                style: TextStyle(
+                  fontSize: 25,
                 ),
-                TextSpan(
-                  text: 'подходят ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                  ),
+              ),
+              TextSpan(
+                text: 'подходят ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
                 ),
-                TextSpan(
-                  text: 'именно вашему другу. ',
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
+              ),
+              TextSpan(
+                text: 'именно вашему другу. ',
+                style: TextStyle(
+                  fontSize: 25,
                 ),
-              ],
-            ),
-            PageViewTitle(
-              currentPageIndex: 2,
-              title: [
-                TextSpan(
-                  text: 'Отслеживайте ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                  ),
+              ),
+            ],
+          ),
+          PageViewTitle(
+            currentPageIndex: 2,
+            title: [
+              TextSpan(
+                text: 'Отслеживайте ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
                 ),
-                TextSpan(
-                  text: 'важные моменты: от питания до прогулок.',
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
+              ),
+              TextSpan(
+                text: 'важные моменты: от питания до прогулок.',
+                style: TextStyle(
+                  fontSize: 25,
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
