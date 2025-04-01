@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pets_app/Config/colors.dart';
-import 'package:pets_app/start_screen/Pages/OnePage.dart';
+import 'package:pets_app/login_screen/LoginScreen.dart';
+import 'package:pets_app/start_screen/Widgets/PageViewTitle.dart';
 
-class StartScreen extends StatefulWidget {
-  const StartScreen({super.key});
+class StartScreen extends StatelessWidget {
+  StartScreen({super.key});
 
-  @override
-  State<StartScreen> createState() => _StartScreenState();
-}
-
-class _StartScreenState extends State<StartScreen> {
-  PageController pageController = PageController();
-  int currentPage = 0;
+  final PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +14,33 @@ class _StartScreenState extends State<StartScreen> {
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton.large(
         onPressed: () {
-          setState(() {
+          if (pageController.page != 2) {
             pageController.nextPage(
                 duration: Duration(milliseconds: 300), curve: Curves.linear);
-          });
+          } else {
+            Navigator.push(
+              context,
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    const LoginScreen(),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  const begin = Offset(0.0, 1.0);
+                  const end = Offset.zero;
+                  const curve = Curves.ease;
+
+                  final tween = Tween(begin: begin, end: end);
+                  final curvedAnimation =
+                      CurvedAnimation(parent: animation, curve: curve);
+
+                  return SlideTransition(
+                    position: tween.animate(curvedAnimation),
+                    child: child,
+                  );
+                },
+              ),
+            );
+          }
         },
         elevation: 0,
         highlightElevation: 0,
@@ -45,7 +63,7 @@ class _StartScreenState extends State<StartScreen> {
           physics: NeverScrollableScrollPhysics(),
           controller: pageController,
           children: [
-            OnePage(
+            PageViewTitle(
               currentPageIndex: 0,
               title: [
                 TextSpan(
@@ -53,19 +71,17 @@ class _StartScreenState extends State<StartScreen> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
-                    color: Colors.black,
                   ),
                 ),
                 TextSpan(
                   text: 'чуть больше о своем питомце',
                   style: TextStyle(
                     fontSize: 25,
-                    color: Colors.black,
                   ),
                 ),
               ],
             ),
-            OnePage(
+            PageViewTitle(
               currentPageIndex: 1,
               title: [
                 TextSpan(
@@ -73,14 +89,12 @@ class _StartScreenState extends State<StartScreen> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
-                    color: Colors.black,
                   ),
                 ),
                 TextSpan(
                   text: 'советы по уходу, которые ',
                   style: TextStyle(
                     fontSize: 25,
-                    color: Colors.black,
                   ),
                 ),
                 TextSpan(
@@ -88,19 +102,17 @@ class _StartScreenState extends State<StartScreen> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
-                    color: Colors.black,
                   ),
                 ),
                 TextSpan(
                   text: 'именно вашему другу. ',
                   style: TextStyle(
                     fontSize: 25,
-                    color: Colors.black,
                   ),
                 ),
               ],
             ),
-            OnePage(
+            PageViewTitle(
               currentPageIndex: 2,
               title: [
                 TextSpan(
@@ -108,14 +120,12 @@ class _StartScreenState extends State<StartScreen> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
-                    color: Colors.black,
                   ),
                 ),
                 TextSpan(
                   text: 'важные моменты: от питания до прогулок.',
                   style: TextStyle(
                     fontSize: 25,
-                    color: Colors.black,
                   ),
                 ),
               ],

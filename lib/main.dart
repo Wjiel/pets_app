@@ -4,7 +4,7 @@ import 'package:pets_app/start_screen/StartScreen.dart';
 void main() {
   runApp(
     MaterialApp(
-      showSemanticsDebugger: false,
+      debugShowCheckedModeBanner: false,
       home: StartScreen(),
     ),
   );
