@@ -19,12 +19,6 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          ClipPath(
-            clipper: BackgroundClipper(),
-            child: Container(
-              color: primaryColor,
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -113,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Ink(
                     width: size.width,
                     decoration: BoxDecoration(
-                      color: Color(0xFFffb585),
+                      color: secondColor,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     padding: EdgeInsets.symmetric(vertical: 10),
@@ -186,7 +180,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-          )
+          ),
+          ClipPath(
+            clipper: BackgroundClipper(),
+            child: Container(
+              color: primaryColor,
+            ),
+          ),
         ],
       ),
     );
