@@ -18,7 +18,7 @@ class StartScreen extends StatelessWidget {
             pageController.nextPage(
                 duration: Duration(milliseconds: 300), curve: Curves.linear);
           } else {
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               PageRouteBuilder(
                 pageBuilder: (context, animation, secondaryAnimation) =>

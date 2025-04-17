@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pets_app/Config/colors.dart';
+import 'package:pets_app/main_screen/Widgets/MyPetsListView.dart';
+import 'package:pets_app/main_screen/Widgets/PlansCard.dart';
 
 class Mainscreen extends StatelessWidget {
   Mainscreen({super.key});
+
   final List<Map<String, String>> data = [
     {
       "name": 'Огурец',
@@ -22,16 +25,20 @@ class Mainscreen extends StatelessWidget {
     }
   ];
 
+  final List<String> dataClass = [
+    'Все',
+    'Коты',
+    'Собаки',
+    'Шиншиллы',
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 0,
-        backgroundColor: primaryColor,
-      ),
+      appBar: AppBar(toolbarHeight: 0, backgroundColor: primaryColor),
       body: ListView(
+        padding: EdgeInsets.only(bottom: 20),
         children: [
           Container(
             padding: EdgeInsets.only(
@@ -62,72 +69,150 @@ class Mainscreen extends StatelessWidget {
                     Icon(
                       Icons.add,
                       size: 30,
-                      color: Colors.grey[500],
+                      color: greyColor,
                     ),
                     Icon(
                       Icons.more_vert,
                       size: 30,
-                      color: Colors.grey[500],
+                      color: greyColor,
                     ),
                   ],
                 )
               ],
             ),
           ),
-          Transform.translate(
-            offset: Offset(0, -30),
-            child: SizedBox(
-              height: 300,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  for (int i = 0; i < 4; i++)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: SizedBox(
-                        width: 100,
-                        child: Column(
-                          spacing: 10,
-                          children: [
-                            CircleAvatar(
-                              radius: 50,
-                              backgroundColor: Colors.white,
-                              child: CircleAvatar(
-                                backgroundColor: primaryColor,
-                                radius: 45,
-                              ),
-                            ),
-                            Text(
-                              data[i]['name']!,
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.w500),
-                            ),
-                            Container(
-                              width: size.width,
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 7),
-                              decoration: BoxDecoration(
-                                color: primaryColor,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: Text(
-                                data[i]['class']!,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            )
-                          ],
+          MyPetsListView(data: data),
+          SizedBox(
+            height: 50,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 20),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(360),
+                      child: Ink(
+                        width: 50,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                        decoration: BoxDecoration(
+                          color: secondColor,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.reorder,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                    )
-                ],
+                    ),
+                  ),
+                ),
+                for (int i = 0; i < 4; i++)
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {},
+                        borderRadius: BorderRadius.circular(30),
+                        child: Ink(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: i != 0 ? Colors.white : primaryColor,
+                            border: Border.all(
+                              color: primaryColor,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Center(
+                            child: Text(
+                              dataClass[i],
+                              style: TextStyle(
+                                color: i == 0 ? Colors.white : primaryColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          SizedBox(height: 30),
+          PlansCard(),
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {},
+                borderRadius: BorderRadius.circular(10),
+                child: Ink(
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+                  decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      border: Border.all(width: 2),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Не забудьте о встречах!',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                      Icon(Icons.chevron_left)
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {},
+                borderRadius: BorderRadius.circular(10),
+                child: Ink(
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+                  decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      border: Border.all(width: 2),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Приходи к нам',
+                          maxLines: 1,
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                      Icon(Icons.chevron_left)
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );

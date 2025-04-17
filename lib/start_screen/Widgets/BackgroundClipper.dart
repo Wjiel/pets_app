@@ -26,17 +26,17 @@ class BackgroundClipper extends CustomClipper<Path> {
 
     path.addOval(
       Rect.fromCircle(
-        center: Offset(size.width * 0.7, size.height * 0.8),
+        center: Offset(size.width * 0.7, size.height * 0.97),
         radius: 20,
       ),
     );
 
-    path.addOval(
-      Rect.fromCircle(
-        center: Offset(size.width * 0.1, size.height * 0.9),
-        radius: 13,
-      ),
-    );
+    // path.addOval(
+    //   Rect.fromCircle(
+    //     center: Offset(size.width * 0.1, size.height * 0.9),
+    //     radius: 13,
+    //   ),
+    // );
 
     path.addOval(
       Rect.fromCircle(
